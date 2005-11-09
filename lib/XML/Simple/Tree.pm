@@ -1,6 +1,6 @@
 package XML::Simple::Tree;
 ## Aaron Dancygier
-## $Id: Tree.pm,v 1.15 2005/11/04 02:12:57 aaron Exp $
+## $Id: Tree.pm,v 1.17 2005/11/09 01:21:53 aaron Exp $
 
 use strict;
 
@@ -24,7 +24,7 @@ use Class::MethodMaker [
 
 our ($VERSION);
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 sub new {
   my ($class, %data) = @_;
@@ -279,12 +279,12 @@ sub toXML {
   my $self = shift;
 
   my $rnode = $self->get_rnode();
-  my $node_key = $self->get_node_key(); ## ex gallery
+  my $target_key = $self->get_target_key(); 
 
   my $xml;
 
   if (ref($_[0]) eq 'HASH') {
-    if (exists($_[0]->{$node_key})) {
+    if (exists($_[0]->{$target_key})) {
       $xml = XMLout(@_);
     }
   } else {
